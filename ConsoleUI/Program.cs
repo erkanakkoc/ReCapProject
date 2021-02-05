@@ -24,6 +24,7 @@ namespace ConsoleUI
             //brandManager.Add(new Brand { BrandName = "AA" });
             Console.WriteLine("What do you want to do?");
             Console.WriteLine(" 1- Add New Car\n 2- Add New Brand \n 3- Add New Color\n 4- GetByColorId\n 5- GetByBrandId \n 6- GetByDailyPrice \n 7- GetByModelYears \n 8- GetAllCars");
+            Console.WriteLine("------------------------");
             var choice = Convert.ToInt32(Console.ReadLine());
             string choiceString = "";
             int choiceInt = 0;
