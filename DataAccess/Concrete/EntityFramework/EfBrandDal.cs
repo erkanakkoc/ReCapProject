@@ -7,29 +7,29 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCarDal : ICarDal
+    public class EfBrandDal : IBrandDal
     {
-        public void Add(Car entity)
+        public void Add(Brand entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Car entity)
+        public void Delete(Brand entity)
         {
             throw new NotImplementedException();
         }
 
-        public Car Get(Expression<Func<Car, bool>> filter)
+        public Brand Get(Expression<Func<Brand, bool>> filter)
         {
             throw new NotImplementedException();
         }
 
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Car entity)
+        public void Update(Brand entity)
         {
             throw new NotImplementedException();
         }
