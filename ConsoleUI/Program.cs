@@ -22,9 +22,10 @@ namespace ConsoleUI
 
             //brandManager.Add(new Brand { BrandName = "BMW" });
             //brandManager.Add(new Brand { BrandName = "AA" });
+            AddAgain:
             Console.WriteLine("What do you want to do?");
             Console.WriteLine(" 1- Add New Car\n 2- Add New Brand \n 3- Add New Color\n 4- GetByColorId\n 5- GetByBrandId \n 6- GetByDailyPrice \n 7- GetByModelYears \n 8- GetAllCars");
-            Console.WriteLine("------------------------");
+            Console.WriteLine("-----------------------------------------------------------------");
             var choice = Convert.ToInt32(Console.ReadLine());
             string choiceString = "";
             int choiceInt = 0;
@@ -32,9 +33,9 @@ namespace ConsoleUI
             {
                 case 1:     //AddNewCar-------------------ITS WORKING
                     Car car1 = new Car();
-                    Console.WriteLine("Brand Name: ");
+                    Console.WriteLine("Brand Id: ");
                     car1.BrandId = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("Color Name: ");
+                    Console.WriteLine("Color Id: ");
                     car1.ColorId = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine("Daily Price: ");
                     car1.DailyPrice = Convert.ToInt32(Console.ReadLine());
@@ -50,19 +51,34 @@ namespace ConsoleUI
                     Console.WriteLine("Brand Name: ");
                     brand1.BrandName = Console.ReadLine();
                     brandManager.Add(brand1);
+                    Console.WriteLine("Will you add more? y/n");
+                    choiceString = Console.ReadLine();
+                    if (choiceString=="y")
+                    {
+                        goto AddAgain;
+                    }
+                    else
                     break;
                 case 3:     //AddNewColor-------------------ITS WORKING
                     Color color1 = new Color();
                     Console.WriteLine("Color Name: ");
                     color1.ColorName = Console.ReadLine();
                     colorManager.Add(color1);
-                    break;
+                    Console.WriteLine("Will you add more? y/n");
+                    choiceString = Console.ReadLine();
+                    if (choiceString == "y")
+                    {
+                        Console.WriteLine("------------------------");
+                        goto AddAgain;
+                    }
+                    else
+                        break;
                 case 4:     //GetByColorId-------------------ITS WORKING
                     Console.WriteLine("Which Color Id Do You Want?");
                     choiceInt = Convert.ToInt32(Console.ReadLine());
                     foreach (var car in carManager.GetCarsByColorId(choiceInt))
                     {
-                        Console.WriteLine(car.CarId + "---" + car.BrandId + "---" + car.ColorId + "---" + car.ModelYear + "---" + car.DailyPrice + "---" + car.Description);
+                        Console.WriteLine("   " + car.CarId + "\t " + brandManager.GetById(car.BrandId).BrandName + "" + colorManager.GetById(car.ColorId).ColorName + "" + car.ModelYear + "\t   " + car.DailyPrice + "\t\t" + car.Description);
                     }
                     break;
                 case 5:     //GetByBrandId-------------------ITS WORKING
@@ -70,16 +86,17 @@ namespace ConsoleUI
                     choiceInt = Convert.ToInt32(Console.ReadLine());
                     foreach (var car in carManager.GetCarsByBrandId(choiceInt))
                     {
-                        Console.WriteLine(car.CarId + "---" + car.BrandId + "---" + car.ColorId + "---" + car.ModelYear + "---" + car.DailyPrice + "---" + car.Description);
+                        Console.WriteLine("   " + car.CarId + "\t " + brandManager.GetById(car.BrandId).BrandName + "" + colorManager.GetById(car.ColorId).ColorName + "" + car.ModelYear + "\t   " + car.DailyPrice + "\t\t" + car.Description);
                     }
                     break;
                 case 6:     //GetByDailyPrice-------------------ITS WORKING
-                    Console.WriteLine("Which Daily Price Range Do You Want?");
+                    Console.WriteLine("Which Daily Price Range Do You Want?\n Minimum Price");
                     var choiceMin = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine(" Maximum Price");
                     var choiceMax = Convert.ToInt32(Console.ReadLine());
                     foreach (var car in carManager.GetByDailyPrice(choiceMin, choiceMax))
                     {
-                        Console.WriteLine(car.CarId + "---" + car.BrandId + "---" + car.ColorId + "---" + car.ModelYear + "---" + car.DailyPrice + "---" + car.Description);
+                        Console.WriteLine("   " + car.CarId + "\t " + brandManager.GetById(car.BrandId).BrandName + "" + colorManager.GetById(car.ColorId).ColorName + "" + car.ModelYear + "\t   " + car.DailyPrice + "\t\t" + car.Description);
                     }
                     break;
                 case 7:     //GetByModelYears-------------------ITS WORKING
@@ -87,13 +104,13 @@ namespace ConsoleUI
                     choiceString = Console.ReadLine();
                     foreach (var car in carManager.GetByModelYear(choiceString))
                     {
-                        Console.WriteLine(car.CarId + "---" + car.BrandId + "---" + car.ColorId + "---" + car.ModelYear + "---" + car.DailyPrice + "---" + car.Description);
+                        Console.WriteLine("   " + car.CarId + "\t " + brandManager.GetById(car.BrandId).BrandName + "" + colorManager.GetById(car.ColorId).ColorName + "" + car.ModelYear + "\t   " + car.DailyPrice + "\t\t" + car.Description);
                     }
                     break;
                 case 8:     //GetAllCars-------------------ITS WORKING
                     foreach (var car in carManager.GetAll())
                     {
-                        Console.WriteLine(car.CarId + "---" + car.BrandId + "---" + car.ColorId + "---" + car.ModelYear + "---" + car.DailyPrice + "---" + car.Description);
+                        Console.WriteLine("   " + car.CarId + "\t " + brandManager.GetById(car.BrandId).BrandName + "" + colorManager.GetById(car.ColorId).ColorName + "" + car.ModelYear + "\t   " + car.DailyPrice + "\t\t" + car.Description);
                     }
                     break;
                 default:

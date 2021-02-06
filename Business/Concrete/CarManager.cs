@@ -51,31 +51,37 @@ namespace Business.Concrete
 
         public List<Car> GetAll()
         {
+            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
             return _carDal.GetAll();
             
         }
 
         public Car GetById(int carId)
         {
+            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
             return _carDal.Get(c => c.CarId == carId);
         }
 
         public List<Car> GetCarsByBrandId(int brandId)
         {
+            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
             return _carDal.GetAll(b => b.BrandId == brandId);
         }
 
         public List<Car> GetCarsByColorId(int colorId)
         {
+            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
             return _carDal.GetAll(co => co.ColorId == colorId);
         }
         public List<Car> GetByModelYear(string modelYear)
         {
+            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
             return _carDal.GetAll(c => c.ModelYear == modelYear);
         }
 
         public List<Car> GetByDailyPrice(decimal min, decimal max)
         {
+            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
             return _carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max);
         }       
     }
