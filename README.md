@@ -6,18 +6,19 @@ Here is the list that you can make with this project right now;
 
   - CRUD for Car, Color, Brand
   - Working with a real DB
+  - EntityFramework files added
   - Real-time queries with your inputs (GetCarsByBrandID, GetCarsByColorId, GetByModelYear, GetByDailyPrice, GetById)
-  - New adding rules (DailyPrice, BrandName)
+  - New adding rules (New Car's DailyPrice must be higher than 0, New Brand's Name must be longer than 2 letter)
  
 # New Features!
 
-## Version 1.4.1
+## Version 1.5.1
+- Core Layer added ✔
+- IEntity, IDto, IEntityRepository, EfEntityRepositoryBase added ✔
+- IDto added for list (CarName, BrandName, ColorName, DailyPrice) ✔
 - Connection to Db ✔
 - EntityFramework files added ✔
-- Added GetByBrandId, GetByColorId, GetByModelYear, GetByDailyPrice Queries in [Program.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/ConsoleUI/Program.cs) file ✔
-- Visual Updated ✔
-- New Car's DailyPrice must be higher than 0 ✔
-- New Brand's Name must be longer than 2 letter ✔
+- CRUD operations tested
 
 
 ## LAYERS
@@ -60,9 +61,19 @@ Here is the list that you can make with this project right now;
 #### - Abstract Classes
 1. [IEntity.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Entities/Abstract/IEntity.cs)
 
+#### - DTOs Classes
 
 
-### 4) ConsoleUI
+### 4) Core Layer
+#### - DataAccess
+1. [IEntityRepository.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/DataAccess/IEntityRepository.cs)
+2. [EfEntityRepositoryBase.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/DataAccess/EntityFramework/EfEntityRepositoryBase.cs)
+
+#### - Entities
+1. [IDto.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/Entities/IDto.cs)
+2. [IEntity.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/Entities/IEntity.cs)
+
+### 5) ConsoleUI
 1. [Program.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/ConsoleUI/Program.cs)
 
 
