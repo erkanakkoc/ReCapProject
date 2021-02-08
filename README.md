@@ -61,9 +61,19 @@ Here is the list that you can make with this project right now;
 #### - Abstract Classes
 1. [IEntity.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Entities/Abstract/IEntity.cs)
 
+#### - DTOs Classes
 
 
-### 4) ConsoleUI
+### 4) Core Layer
+#### - DataAccess
+1. [IEntityRepository.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/DataAccess/IEntityRepository.cs)
+2. [EfEntityRepositoryBase.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/DataAccess/EntityFramework/EfEntityRepositoryBase.cs)
+
+#### - Entities
+1. [IDto.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/Entities/IDto.cs)
+2. [IEntity.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/Entities/IEntity.cs)
+
+### 5) ConsoleUI
 1. [Program.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/ConsoleUI/Program.cs)
 
 
