@@ -16,9 +16,33 @@ namespace ConsoleUI
 
             foreach (var car in carManager.GetCarDetails())
             {
-                Console.WriteLine(car.CarName + "/" + car.BrandName);
+                Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-13} | {4,-13} | {5,-13} | {6,-15} | {7,-20}| {8,-20} ", car.CarId,
+                            car.CarName, car.BrandId, car.BrandName, car.ColorId, car.ColorName, car.ModelYear, car.DailyPrice, car.Description));
+                
             }
- 
+
+            Car car1 = new Car();
+            
+
+            Console.WriteLine("Car Name: ");
+            car1.CarName = Console.ReadLine();
+            Console.WriteLine("Brand Id: ");
+            car1.BrandId = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Color Id: ");
+            car1.ColorId = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Daily Price: ");
+            car1.DailyPrice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Model Year: ");
+            car1.ModelYear = Console.ReadLine();
+            Console.WriteLine("Description: ");
+            car1.Description = Console.ReadLine();
+            carManager.Add(car1);
+
+            Console.WriteLine(car1.CarName + "added");
+
+
+
+
 
             //carManager.Add(new Car { BrandId = 2, ColorId = 2, ModelYear = "2010", DailyPrice = 125, Description="Correct Example 1"});
             //carManager.Add(new Car { BrandId = 4, ColorId = 3, ModelYear = "2005", DailyPrice = 0, Description = "Failure Exapmle"});

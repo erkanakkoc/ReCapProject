@@ -20,20 +20,43 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            TryAgain:
-            if (car.DailyPrice>0)
-            {
-                _carDal.Add(car);
-                Console.WriteLine("Car Id: " +car.CarId + " Added with "+car.DailyPrice+" Daily Price Successfully");
-            }
-            else
-            {
-                Console.WriteLine("Error!!! Daily Price must be higher than 0");
-                Console.WriteLine("Please write a correct value for daily price");
-                car.DailyPrice= Convert.ToInt32(Console.ReadLine());
-                goto TryAgain;
+            //TryAgain:
+            //if (car.DailyPrice>0 && car.CarName.Length>2)  //Both turns true
+            //{
+            //    _carDal.Add(car);
+            //    Console.WriteLine("Car Id: " +car.CarId + " Added with "+car.DailyPrice+" Daily Price Successfully");
+            //}
+            //else if(car.DailyPrice <= 0 && car.CarName.Length > 2)  //carname turns true - dailyprice turn false
+            //{
+            //    Console.WriteLine("Error!!! Daily Price must be higher than 0");
+            //    Console.WriteLine("Please write a correct value for daily price");
+            //    car.DailyPrice= Convert.ToInt32(Console.ReadLine());
+            //    goto TryAgain;
+            //}
+            //else if(car.DailyPrice > 0 && car.CarName.Length <= 2) //carname turns false - dailyprice turn true
+            //{
+            //    Console.WriteLine("Error!!! Car name must be longer than 2 letters");
+            //    Console.WriteLine("Please write a correct car name");
+            //    car.CarName = Console.ReadLine();
+            //    goto TryAgain;
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Error!!! Car name and Daily Price wrong");
+            //}
 
+            while (car.DailyPrice <= 0 && car.CarName.Length <= 2)
+            {
+                Console.WriteLine("Error!!! Daily Price must be higher than 0 and Car name must be longer than 2 letters");
+                Console.WriteLine("Please write a correct value for daily price");
+                car.DailyPrice = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Please write a correct value for car name");
+                car.CarName = Console.ReadLine();
             }
+            _carDal.Add(car);
+            Console.WriteLine("Car Name: " + car.CarName + " Added with " + car.DailyPrice + " Daily Price Successfully");
+
+
         }
 
         public void Update(Car car)
