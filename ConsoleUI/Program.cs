@@ -13,11 +13,11 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
+            Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-13} | {4,-13} | {5,-13} | {6,-15} ", "CarId", "CarName", "BranName", "ColorName", "ModelYear", "DailyPrice", "Description"));
 
             foreach (var car in carManager.GetCarDetails())
             {
-                Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-13} | {4,-13} | {5,-13} | {6,-15} | {7,-20}| {8,-20} ", car.CarId,
-                            car.CarName, car.BrandId, car.BrandName, car.ColorId, car.ColorName, car.ModelYear, car.DailyPrice, car.Description));
+                Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-13} | {4,-13} | {5,-13} | {6,-15} ", car.CarId, car.CarName, car.BrandName, car.ColorName, car.ModelYear, car.DailyPrice, car.Description));
                 
             }
 
