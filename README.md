@@ -102,7 +102,7 @@ ColorId | int
 ColorName | nvarchar(15)
 
 
-#### Brands | #### Colors | #### Cars
+Brands | Colors | Cars
 Variable Name | Data Type | Variable Name | Data Type | Variable Name | Data Type 
 ------------ | -------------
 BrandId | int
