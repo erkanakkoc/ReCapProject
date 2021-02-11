@@ -100,27 +100,3 @@ Variable Name | Data Type
 ------------ | -------------
 ColorId | int
 ColorName | nvarchar(15)
-
-
-#### Brands | #### Colors | #### Cars
-Variable Name | Data Type | Variable Name | Data Type | Variable Name | Data Type 
------------- | -------------
-BrandId | int
-BrandName | nvarchar(15)
-
-#### Cars
-Variable Name | Data Type
------------- | -------------
-CarId | int
-BrandId | int
-ColorId | int
-ModelYear | nvarchar(5)
-DailyPrice | decimal
-Description | nvarchar(255)
-
-#### Colors
-Variable Name | Data Type
------------- | -------------
-ColorId | int
-ColorName | nvarchar(15)
-
