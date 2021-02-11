@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -18,7 +19,7 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             //TryAgain:
             //if (car.DailyPrice>0 && car.CarName.Length>2)  //Both turns true
@@ -45,16 +46,23 @@ namespace Business.Concrete
             //    Console.WriteLine("Error!!! Car name and Daily Price wrong");
             //}
 
-            while (car.DailyPrice <= 0 && car.CarName.Length <= 2)
+            //VERSION 2.0
+
+            //while (car.DailyPrice <= 0 && car.CarName.Length <= 2)
+            //{
+            //    Console.WriteLine("Error!!! Daily Price must be higher than 0 and Car name must be longer than 2 letters");
+            //    Console.WriteLine("Please write a correct value for daily price");
+            //    car.DailyPrice = Convert.ToInt32(Console.ReadLine());
+            //    Console.WriteLine("Please write a correct value for car name");
+            //    car.CarName = Console.ReadLine();
+            //}
+            if (car.CarName.Length<2)
             {
-                Console.WriteLine("Error!!! Daily Price must be higher than 0 and Car name must be longer than 2 letters");
-                Console.WriteLine("Please write a correct value for daily price");
-                car.DailyPrice = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Please write a correct value for car name");
-                car.CarName = Console.ReadLine();
+                return new ErrorResult("Car name must be longer than 2 letters");
             }
             _carDal.Add(car);
-            Console.WriteLine("Car Name: " + car.CarName + " Added with " + car.DailyPrice + " Daily Price Successfully");
+            return new SuccessResult("Car added");
+            //Console.WriteLine("Car Name: " + car.CarName + " Added with " + car.DailyPrice + " Daily Price Successfully");
 
 
         }
