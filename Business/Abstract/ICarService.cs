@@ -3,6 +3,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Business.Abstract
@@ -14,10 +15,10 @@ namespace Business.Abstract
         IResult Delete(Car car);
         IDataResult<List<Car>> GetAll();
         IDataResult<Car> GetById(int carId);
-        IDataResult<List<Car>> GetCarsByColorId(int colorId);
-        IDataResult<List<Car>> GetCarsByBrandId(int brandId);
-        IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max);
-        IDataResult<List<Car>> GetByModelYear(string modelYear);
-        IDataResult<List<CarDetailDto>> GetCarDetails();
+        IDataResult<List<CarDetailDto>> GetCarsByColorId(int colorId);
+        IDataResult<List<CarDetailDto>> GetCarsByBrandId(int brandId);
+        IDataResult<List<CarDetailDto>> GetByDailyPrice(decimal min, decimal max);
+        IDataResult<List<CarDetailDto>> GetByModelYear(string modelYear);
+        IDataResult<List<CarDetailDto>> GetCarDetails(Expression<Func<Car, bool>> filter = null);
     }
 }

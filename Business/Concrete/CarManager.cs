@@ -7,6 +7,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Business.Concrete
@@ -75,7 +76,7 @@ namespace Business.Concrete
                 return new ErrorResult(Messages.CarNameInvalid);
             }
             _carDal.Update(car);
-            Console.WriteLine("Updated Successfully");
+            //Console.WriteLine("Updated Successfully");
             return new SuccessResult(Messages.CarUpdated);
         }
 
@@ -83,7 +84,7 @@ namespace Business.Concrete
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            Console.WriteLine("Deleted Successfully");
+            //Console.WriteLine("Deleted Successfully");
             return new SuccessResult(Messages.CarDeleted);
         }
 
@@ -106,36 +107,36 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == carId));
         }
 
-        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
+        public IDataResult<List<CarDetailDto>> GetCarsByBrandId(int brandId)
         {
-            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(b => b.BrandId == brandId));
+            //Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(b => b.BrandId == brandId));
         }
 
-        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
+        public IDataResult<List<CarDetailDto>> GetCarsByColorId(int colorId)
         {
-            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(co => co.ColorId == colorId));
+            //Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(co => co.ColorId == colorId));
         }
-        public IDataResult<List<Car>> GetByModelYear(string modelYear)
+        public IDataResult<List<CarDetailDto>> GetByModelYear(string modelYear)
         {
             Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ModelYear == modelYear));
-        }
-
-        public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
-        {
-            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max));
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.ModelYear == modelYear));
         }
 
-        public IDataResult<List<CarDetailDto>> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetByDailyPrice(decimal min, decimal max)
+        {
+            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.DailyPrice >= min && c.DailyPrice <= max));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetails(Expression<Func<Car, bool>> filter = null)
         {
             if (DateTime.Now.Hour == 13)
             {
                 return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintenanceTime);
             }
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(filter));
         }
     }
 }
