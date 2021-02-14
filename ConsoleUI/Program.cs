@@ -18,9 +18,10 @@ namespace ConsoleUI
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
 
-            var choice = Convert.ToInt32(Console.ReadLine());
+            
             Console.WriteLine("What do you want to do?");
-            Console.WriteLine(" 1- Add - Update - Delete) Operations\n 2 - List Operation ");
+            Console.WriteLine(" 1- (Add - Update - Delete) Operations\n 2 - List Operation ");
+            var choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
                 case 1:
@@ -78,9 +79,11 @@ namespace ConsoleUI
                     AddNewCar(carManager);
                     break;
                 case 2:     //UpdateCar-------------------ITS WORKING
+                    GetCarDetail(carManager);
                     UpdateCar(carManager);
                     break;
                 case 3:     //DeleteCar-------------------ITS WORKING
+                    GetCarDetail(carManager);
                     DeleteCar(carManager);
                     break;
                 case 4:     //AddNewBrand-------------------ITS WORKING
@@ -145,25 +148,54 @@ namespace ConsoleUI
         // ------------------------------- Case 2 : UpdateCar ----------------------------------------
         private static void UpdateCar(CarManager carManager)
         {
-            Car car1 = new Car();
+
+            //Console.WriteLine("Write Car ID For Update");
+            //int updateCarId = Convert.ToInt32(Console.ReadLine());
+            //Car updateCar = new Car();
+            //Console.WriteLine("Car Name: ");
+            //updateCar.CarName = Console.ReadLine();
+            //Console.WriteLine("Brand Id: ");
+            //updateCar.BrandId = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Color Id: ");
+            //updateCar.ColorId = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Daily Price: ");
+            //updateCar.DailyPrice = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Model Year: ");
+            //updateCar.ModelYear = Console.ReadLine();
+            //Console.WriteLine("Description: ");
+            //updateCar.Description = Console.ReadLine();
+            //carManager.Update(updateCar);
+            //carManager.Update(carManager.GetById(updateCarId).Data);
+
+            Console.WriteLine("Car Id: ");
+            int updateCarId = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine("Car Name: ");
-            car1.CarName = Console.ReadLine();
+            string updateCarName = Console.ReadLine();
+
             Console.WriteLine("Brand Id: ");
-            car1.BrandId = Convert.ToInt32(Console.ReadLine());
+            int updateBrandId = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine("Color Id: ");
-            car1.ColorId = Convert.ToInt32(Console.ReadLine());
+            int updateColorId = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine("Daily Price: ");
-            car1.DailyPrice = Convert.ToInt32(Console.ReadLine());
+            decimal updateDailyPrice = Convert.ToDecimal(Console.ReadLine());
+
             Console.WriteLine("Model Year: ");
-            car1.ModelYear = Console.ReadLine();
-            Console.WriteLine("Description: ");
-            car1.Description = Console.ReadLine();
-            carManager.Update(car1);
+            string updateModelYear = Console.ReadLine();
+
+            Console.WriteLine("Description : ");
+            string updateDescription = Console.ReadLine();
+
+            Car updateCar = new Car { CarId = updateCarId, BrandId = updateBrandId, CarName= updateCarName, ColorId = updateColorId, DailyPrice = updateDailyPrice, Description = updateDescription, ModelYear = updateModelYear };
+            carManager.Update(updateCar);
         }
 
         // ------------------------------- Case 2 : DeleteCar ----------------------------------------
         private static void DeleteCar(CarManager carManager)
         {
+            Console.WriteLine("Write Car ID For Delete");
             int deleteCar = Convert.ToInt32(Console.ReadLine());
             carManager.Delete(carManager.GetById(deleteCar).Data);
         }
