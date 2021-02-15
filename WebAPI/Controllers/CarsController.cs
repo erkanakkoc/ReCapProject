@@ -48,7 +48,40 @@ namespace WebAPI.Controllers
         [HttpGet("getbybrandid")]
         public IActionResult GetCarsByBrandId(int brandId)
         {
-            var result = _carService.GetById(brandId);
+            var result = _carService.GetCarsByBrandId(brandId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbycolorid")]
+        public IActionResult GetCarsByColorId(int colorId)
+        {
+            var result = _carService.GetCarsByColorId(colorId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbymodelyear")]
+        public IActionResult GetByModelYear(string modelYear)
+        {
+            var result = _carService.GetByModelYear(modelYear);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbydailyprice")]
+        public IActionResult GetByDailyPrice(decimal min, decimal max)
+        {
+            var result = _carService.GetByDailyPrice(min,max);
             if (result.Success)
             {
                 return Ok(result);
