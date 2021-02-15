@@ -18,17 +18,17 @@ namespace ConsoleUI
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
 
-            
+
             Console.WriteLine("What do you want to do?");
             Console.WriteLine(" 1- (Add - Update - Delete) Operations\n 2 - List Operation ");
             var choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
                 case 1:
-                    AddUpdateDeleteOperations(carManager, colorManager, brandManager);
+                    AddUpdateDeleteOperations(carManager, colorManager, brandManager, userManager, customerManager, rentalManager);
                     break;
                 case 2:
-                    ListOperations(carManager, colorManager, brandManager);
+                    ListOperations(carManager, colorManager, brandManager, userManager, customerManager, rentalManager);
                     break;
                 default:
                     break;
@@ -37,29 +37,45 @@ namespace ConsoleUI
             
 
         }
+        
 
         //------------------------------------------------ListOperations----------------------------------------------------
-        private static void ListOperations(CarManager carManager, ColorManager colorManager, BrandManager brandManager)
+        private static void ListOperations(CarManager carManager, ColorManager colorManager, BrandManager brandManager, UserManager userManager, CustomerManager customerManager, RentalManager rentalManager)
         {
-            Console.WriteLine("4- GetByColorId\n 5- GetByBrandId \n 6- GetByDailyPrice \n 7- GetByModelYears \n 8- GetAllCars");
+            Console.WriteLine("1- GetCarsByColorId\n 2- GetCarsByBrandId \n 3- GetCarsByDailyPrice \n 4- GetCarsByModelYears \n 5- GetAllCars \n 6- GetRentalByCarId \n 7- GetRentalByCustomerId \n 8- GetRentalByRentDate \n 9- GetRentalByReturnDate \n 10- RentedAllCars");
             Console.WriteLine("-----------------------------------------------------------------");
             var choice2 = Convert.ToInt32(Console.ReadLine());
             switch (choice2)
             {
-                case 4:     //GetByColorId-------------------ITS WORKING
+                case 1:     //GetCarsByColorId-------------------ITS WORKING
                     GetCarsByColorId(carManager);
                     break;
-                case 5:     //GetByBrandId-------------------ITS WORKING
+                case 2:     //GetCarsByBrandId-------------------ITS WORKING
                     GetCarsByBrandId(carManager);
                     break;
-                case 6:     //GetByDailyPrice-------------------ITS WORKING
+                case 3:     //GetCarsByDailyPrice-------------------ITS WORKING
                     GetByDailyPrice(carManager, colorManager, brandManager);
                     break;
-                case 7:     //GetByModelYears-------------------ITS WORKING
+                case 4:     //GetCarsByModelYears-------------------ITS WORKING
                     GetByModelYear(carManager, colorManager, brandManager);
                     break;
-                case 8:     //GetAllCars-------------------ITS WORKING
+                case 5:     //GetCarDetail-------------------ITS WORKING
                     GetCarDetail(carManager);
+                    break;
+                case 6:     //GetRentalByCarId-------------------ITS WORKING
+                    GetRentalByCarId(rentalManager);
+                    break;
+                case 7:     //GetRentalByCustomerId-------------------ITS WORKING
+                    GetRentalByCustomerId(rentalManager);
+                    break;
+                case 8:     //GetRentalByRentDate-------------------ITS WORKING
+                    GetRentalByRentDate(rentalManager);
+                    break;
+                case 9:     //GetRentalByReturnDate-------------------ITS WORKING                    
+                    GetRentalByReturnDate(rentalManager);
+                    break;
+                case 10:     //RentedAllCars-------------------ITS WORKING
+                    RentedAllCars(rentalManager);
                     break;
                 default:
                     break;
@@ -67,7 +83,7 @@ namespace ConsoleUI
         }
 
         //--------------------------------------------AddUpdateDeleteOperations----------------------------------------------------
-        private static void AddUpdateDeleteOperations(CarManager carManager, ColorManager colorManager, BrandManager brandManager)
+        private static void AddUpdateDeleteOperations(CarManager carManager, ColorManager colorManager, BrandManager brandManager, UserManager userManager, CustomerManager customerManager, RentalManager rentalManager)
         {
             Console.WriteLine(" 1- Car - Add New\n 2- Car - Update\n 3- Car - Delete\n 4- Brand - Add New\n 5- Color - Add New\n 6- User - Add New\n 7- Customer - Add New\n 8- Rent A Car\n 9- Update Rented Car\n 10- Delete Rented Car");
             Console.WriteLine("-----------------------------------------------------------------");
@@ -93,34 +109,25 @@ namespace ConsoleUI
                     AddNewColor(colorManager);
                     break;
                 case 6:     //AddNewUser-------------------ITS WORKING
+                    AddNewUser(userManager);
                     break;
                 case 7:     //AddNewCustomer-------------------ITS WORKING
+                    AddNewCustomer(customerManager);
                     break;
                 case 8:     //RentACar-------------------ITS WORKING
+                    RentACar(rentalManager);
                     break;
                 case 9:     //UpdateRentedCar-------------------ITS WORKING
+                    ReturnedCar(rentalManager);
                     break;
                 case 10:     //DeleteRentedCar-------------------ITS WORKING
+                    DeleteRental(rentalManager);
                     break;
                 default:
                     break;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //-------------------------------------- ADD / UPDATE / DELETE OPERATIONS------------------------------
 
         // ------------------------------- Case 1 : AddNewCar ----------------------------------------
         private static void AddNewCar(CarManager carManager)
@@ -199,7 +206,6 @@ namespace ConsoleUI
             int deleteCar = Convert.ToInt32(Console.ReadLine());
             carManager.Delete(carManager.GetById(deleteCar).Data);
         }
-
         // ------------------------------- Case 4 : AddNewBrand ----------------------------------------
         private static void AddNewBrand(BrandManager brandManager)
         {
@@ -208,7 +214,6 @@ namespace ConsoleUI
             brand1.BrandName = Console.ReadLine();
             brandManager.Add(brand1);
         }
-
         // ------------------------------- Case 5 : AddNewColor ----------------------------------------
         private static void AddNewColor(ColorManager colorManager)
         {
@@ -217,8 +222,61 @@ namespace ConsoleUI
             color1.ColorName = Console.ReadLine();
             colorManager.Add(color1);
         }
+        //--------------------------------------------------- Case 6 : AddNewUser-----------------------------------------------------
+        private static void AddNewUser(UserManager userManager)
+        {
+            User user1 = new User();
+            Console.WriteLine("First Name : ");
+            user1.FirstName = Console.ReadLine();
+            Console.WriteLine("Last Name : ");
+            user1.LastName = Console.ReadLine();
+            Console.WriteLine("E-mail : ");
+            user1.Email = Console.ReadLine();
+            Console.WriteLine("Password : ");
+            user1.Password = Console.ReadLine();
+            userManager.Add(user1);
+        }
+        // ------------------------------- Case 7 : AddNewCustomer ----------------------------------------
+        private static void AddNewCustomer(CustomerManager customerManager)
+        {
 
-        // ------------------------------- Case 4 : GetCarsByColorId ----------------------------------------
+            Customer customer1 = new Customer();
+            Console.WriteLine("User ID : ");
+            customer1.UserId = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Company Name : ");
+            customer1.CompanyName = Console.ReadLine();
+            customerManager.Add(customer1);
+        }
+        //-------------------------------------------------- Case 8 : RentACar-------------------------------------------------------
+        private static void RentACar(RentalManager rentalManager)
+        {
+            Rental rental = new Rental();
+            Console.WriteLine("Car ID : ");
+            rental.CarId = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Customer ID : ");
+            rental.CustomerId = Convert.ToInt32(Console.ReadLine());
+            rental.RentDate = DateTime.Now;
+            rental.ReturnDate = null;
+            Console.WriteLine(rentalManager.Add(rental).Message);
+        }
+        //------------------------------------------------ Case 9 : ReturnedCar----------------------------------------------------
+        private static void ReturnedCar(RentalManager rentalManager)
+        {
+            Console.WriteLine("Returned Car ID : ");
+            int updateRentID = Convert.ToInt32(Console.ReadLine());
+            Rental returnedCar = new Rental { CarId = updateRentID, ReturnDate = DateTime.Now };
+            rentalManager.Update(returnedCar);
+        }
+        //------------------------------------------------ Case 10 : DeleteRental--------------------------------------------------
+        private static void DeleteRental(RentalManager rentalManager)
+        {
+            Console.WriteLine("Write Rental ID For Delete");
+            int deleteRent = Convert.ToInt32(Console.ReadLine());
+            rentalManager.Delete(rentalManager.GetById(deleteRent).Data);
+        }
+        //----------------------------------------LIST OPERATIONS---------------------------------------------------
+
+        // ------------------------------- Case 1 : GetCarsByColorId ----------------------------------------
         private static void GetCarsByColorId(CarManager carManager)
         {
             Console.WriteLine("Which Color Id Do You Want?");
@@ -234,8 +292,7 @@ namespace ConsoleUI
                 }
             }
         }
-
-        // ------------------------------- Case 5 : GetCarsByBrandId ----------------------------------------
+        // ------------------------------- Case 2 : GetCarsByBrandId ----------------------------------------
         private static void GetCarsByBrandId(CarManager carManager)
         {
             Console.WriteLine("Which Brand Id Do You Want?");
@@ -251,8 +308,7 @@ namespace ConsoleUI
                 }
             }
         }
-
-        // ------------------------------- Case 6 : GetByDailyPrice ----------------------------------------
+        // ------------------------------- Case 3 : GetByDailyPrice ----------------------------------------
         private static void GetByDailyPrice(CarManager carManager, ColorManager colorManager, BrandManager brandManager)
         {
             Console.WriteLine("Which Daily Price Range Do You Want?\n Minimum Price");
@@ -265,8 +321,7 @@ namespace ConsoleUI
                 Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-13} | {4,-13} | {5,-13} | {6,-15} ", car.CarId, car.CarName, car.BrandName, car.ColorName, car.ModelYear, car.DailyPrice, car.Description));
             }
         }
-
-        // ------------------------------- Case 7 : GeyByModelYear ----------------------------------------
+        // ------------------------------- Case 4 : GeyByModelYear ----------------------------------------
         private static void GetByModelYear(CarManager carManager, ColorManager colorManager, BrandManager brandManager)
         {
             Console.WriteLine("Which Model Year Do You Want?");
@@ -277,8 +332,7 @@ namespace ConsoleUI
                 Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-13} | {4,-13} | {5,-13} | {6,-15} ", car.CarId, car.CarName, car.BrandName, car.ColorName, car.ModelYear, car.DailyPrice, car.Description));
             }
         }
-
-        // ------------------------------- Case 8 : GetCarDetails ----------------------------------------
+        // ------------------------------- Case 5 : GetCarDetails ----------------------------------------
         private static void GetCarDetail(CarManager carManager)
         {
             var result = carManager.GetCarDetails();
@@ -289,7 +343,6 @@ namespace ConsoleUI
                 foreach (var car in result.Data)
                 {
                     Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-13} | {4,-13} | {5,-13} | {6,-15} ", car.CarId, car.CarName, car.BrandName, car.ColorName, car.ModelYear, car.DailyPrice, car.Description));
-
                 }
             }
             else
@@ -297,6 +350,79 @@ namespace ConsoleUI
                 Console.WriteLine(result.Message);
             }
         }
-
+        //------------------------------- Case 6 : GetRentalByCarId --------------------------------
+        private static void GetRentalByCarId(RentalManager rentalManager)
+        {
+            Console.WriteLine("Which Car Id Do You Want?");
+            var choiceInt = Convert.ToInt32(Console.ReadLine());
+            var resultCarId = rentalManager.GetRentalByCarId(choiceInt);
+            if (resultCarId.Success == true)
+            {
+                Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-19} | {6,-15} ", "RentalId", "CarName", "FirstName", "LastName", "CompanyName", "RentDate", "ReturnDate"));
+                Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
+                foreach (var rent in resultCarId.Data)
+                {
+                    Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.CarName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
+                }
+            }
+        }
+        //-------------------------------- Case 7 : GetRentalByCustomerId --------------------------
+        private static void GetRentalByCustomerId(RentalManager rentalManager)
+        {
+            Console.WriteLine("Which Customer Id Do You Want?");
+            var choiceInt = Convert.ToInt32(Console.ReadLine());
+            var resultCustomerId = rentalManager.GetRentalByCustomerId(choiceInt);
+            if (resultCustomerId.Success == true)
+            {
+                Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-19} | {6,-15} ", "RentalId", "CarName", "FirstName", "LastName", "CompanyName", "RentDate", "ReturnDate"));
+                Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
+                foreach (var rent in resultCustomerId.Data)
+                {
+                    Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.CarName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
+                }
+            }
+        }
+        //-------------------------------- Case 8 : GetRentalByRentDate -----------------------------
+        private static void GetRentalByRentDate(RentalManager rentalManager)
+        {
+            Console.WriteLine("Which Customer Id Do You Want?");
+            var choiceDate = Convert.ToDateTime(Console.ReadLine());
+            var resultRentDate = rentalManager.GetRentalByRentDate(choiceDate);
+            if (resultRentDate.Success == true)
+            {
+                Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-19} | {6,-15} ", "RentalId", "CarName", "FirstName", "LastName", "CompanyName", "RentDate", "ReturnDate"));
+                Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
+                foreach (var rent in resultRentDate.Data)
+                {
+                    Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.CarName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
+                }
+            }
+        }
+        //------------------------------- Case 9 : GetRentalByReturnDate ----------------------------
+        private static void GetRentalByReturnDate(RentalManager rentalManager)
+        {
+            Console.WriteLine("Which Customer Id Do You Want?");
+            var choiceDate = Convert.ToDateTime(Console.ReadLine());
+            var resultReturnDate = rentalManager.GetRentalByReturnDate(choiceDate);
+            if (resultReturnDate.Success == true)
+            {
+                Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-19} | {6,-15} ", "RentalId", "CarName", "FirstName", "LastName", "CompanyName", "RentDate", "ReturnDate"));
+                Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
+                foreach (var rent in resultReturnDate.Data)
+                {
+                    Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.CarName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
+                }
+            }
+        }
+        //-------------------------------- Case 10 : RentedAllCars --------------------------------------
+        private static void RentedAllCars(RentalManager rentalManager)
+        {
+            Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-19} | {6,-15} ", "RentalId", "CarName", "FirstName", "LastName", "CompanyName", "RentDate", "ReturnDate"));
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
+            foreach (var rent in rentalManager.GetRentalDetails().Data)
+            {
+                Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.CarName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
+            }
+        }
     }
 }
