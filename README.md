@@ -4,7 +4,7 @@ It's a simple rent a car project. But it will be professional with new updates.
 
 Here is the list that you can make with this project right now;
 
-  - CRUD for Car, Color, Brand
+  - CRUD for Car, Color, Brand, User, Customer and Rentals
   - Working with a real DB
   - EntityFramework files added
   - IEntity, IDto, IEntityRepository, EfEntityRepositoryBase added
