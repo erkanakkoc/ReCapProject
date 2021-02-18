@@ -27,8 +27,8 @@ Here is the list that you can make with this project right now;
 
 ## LAYERS
 
-### 1) Business Layer
-#### - Concrete Classes
+:file_folder: `1) Business Layer`
+&nbsp;&nbsp;:file_folder:`-Concrete Classes`
 1. [CarManager.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/Concrete/CarManager.cs)
 2. [BrandManager.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/Concrete/BrandManager.cs)
 3. [ColorManager.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/Concrete/ColorManager.cs)
