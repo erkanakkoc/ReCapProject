@@ -10,13 +10,18 @@ Here is the list that you can make with this project right now;
   - IEntity, IDto, IEntityRepository, EfEntityRepositoryBase added
   - Core Layer added 
   - Real-time queries with your inputs
+  - WebAPI added
+  - Controllers added (CarsController, BrandsController, ColorsController, CustomersController, UsersController, RentalsController)
+  - All functions of Business Layers added to Controllers
+
  
 # New Features!
 
-## Version 1.7
--  WebAPI added ✔
-- Controllers added (CarsController, BrandsController, ColorsController, CustomersController, UsersController, RentalsController) ✔
-- All functions of Business Layers added to Controllers ✔
+## Version 1.8
+- Autofac ✔
+- FluentValidation (CarValidation, RentalValidation) ✔
+- ValidationAspect ✔
+- AOP ✔
 - Tested on Postman ✔
 
 
