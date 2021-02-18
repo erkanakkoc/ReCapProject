@@ -1,10 +1,14 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -21,6 +25,7 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
             //TryAgain:
@@ -58,10 +63,11 @@ namespace Business.Concrete
             //    Console.WriteLine("Please write a correct value for car name");
             //    car.CarName = Console.ReadLine();
             //}
-            if (car.CarName.Length<2)
-            {
-                return new ErrorResult(Messages.CarNameInvalid);
-            }
+            //if (car.CarName.Length<2)
+            //{
+            //    return new ErrorResult(Messages.CarNameInvalid);
+            //}
+             
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
             //Console.WriteLine("Car Name: " + car.CarName + " Added with " + car.DailyPrice + " Daily Price Successfully");
@@ -69,12 +75,10 @@ namespace Business.Concrete
 
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
-            if (car.CarName.Length < 2 || car.DailyPrice<=0)
-            {
-                return new ErrorResult(Messages.CarNameInvalid);
-            }
+            
             _carDal.Update(car);
             //Console.WriteLine("Updated Successfully");
             return new SuccessResult(Messages.CarUpdated);
