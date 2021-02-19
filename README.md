@@ -54,6 +54,7 @@ Here is the list that you can make with this project right now;
 #### - FluentValidation
 1. [CarValidator.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/ValidationRules/FluentValidation/CarValidator.cs)
 2. [RentalValidator.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/ValidationRules/FluentValidation/RentalValidator.cs)
+3. [UserValidator.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/ValidationRules/FluentValidation/UserValidator.cs)
 
 
 ### 2) DataAccess Layer
