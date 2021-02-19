@@ -17,9 +17,10 @@ Here is the list that you can make with this project right now;
  
 # New Features!
 
-## Version 1.8
+## Version 1.8.1
 - Autofac ✔
-- FluentValidation (CarValidation, RentalValidation) ✔
+- New Rules(Model Year Must Be Between 1900-2099, ReturnDate Can't Be Early Date Than RentalDate) ✔
+- FluentValidation (UserValidator, CarValidator, RentalValidator) ✔
 - ValidationAspect ✔
 - AOP ✔
 - Tested on Postman ✔
