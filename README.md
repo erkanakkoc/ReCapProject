@@ -10,13 +10,18 @@ Here is the list that you can make with this project right now;
   - IEntity, IDto, IEntityRepository, EfEntityRepositoryBase added
   - Core Layer added 
   - Real-time queries with your inputs
+  - WebAPI added
+  - Controllers added (CarsController, BrandsController, ColorsController, CustomersController, UsersController, RentalsController)
+  - All functions of Business Layers added to Controllers
+
  
 # New Features!
 
-## Version 1.7
--  WebAPI added ✔
-- Controllers added (CarsController, BrandsController, ColorsController, CustomersController, UsersController, RentalsController) ✔
-- All functions of Business Layers added to Controllers ✔
+## Version 1.8
+- Autofac ✔
+- FluentValidation (CarValidation, RentalValidation) ✔
+- ValidationAspect ✔
+- AOP ✔
 - Tested on Postman ✔
 
 
@@ -38,6 +43,17 @@ Here is the list that you can make with this project right now;
 4. [ICustomerService.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/Abstract/ICustomerService.cs)
 5. [IUserService.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/Abstract/IUserService.cs)
 6. [IRentalService.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/Abstract/IRentalService.cs)
+
+#### - Constants Classes
+1. [Messages.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/Constants/Messages.cs)
+
+#### - DependencyResolvers
+1. [AutofacBusinessModule.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/DependencyResolvers/Autofac/AutofacBusinessModule.cs)
+
+#### - FluentValidation
+1. [CarValidator.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/ValidationRules/FluentValidation/CarValidator.cs)
+2. [RentalValidator.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Business/ValidationRules/FluentValidation/RentalValidator.cs)
+
 
 ### 2) DataAccess Layer
 #### - EntityFramework
@@ -90,6 +106,20 @@ Here is the list that you can make with this project right now;
 #### - Entities
 1. [IDto.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/Entities/IDto.cs)
 2. [IEntity.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/Entities/IEntity.cs)
+
+#### - Utilities
+##### - Interceptors
+1. [AspectInterceptorSelector.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/Utilities/Interceptors/AspectInterceptorSelector.cs)
+2. [MethodInterception.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/Utilities/Interceptors/MethodInterception.cs)
+3. [MethodInterceptionBaseAttribute.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/Utilities/Interceptors/MethodInterceptionBaseAttribute.cs)
+
+#### - CrossCuttingConcerns
+1. [ValidationTool.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/CrossCuttingConcerns/Validation/ValidationTool.cs)
+
+
+#### - Aspects
+1. [ValidationAspect.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/Core/Aspects/Autofac/Validation/ValidationAspect.cs)
+
 
 ### 5) ConsoleUI
 1. [Program.cs](https://github.com/erkanakkoc/ReCapProject/blob/master/ConsoleUI/Program.cs)
