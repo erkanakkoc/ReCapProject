@@ -21,9 +21,13 @@ Bu projede yapabileceğiniz işlemlerden bazıları;
  
 # Yeni Özellikler!
 
-## Versiyon 1.8.1
+## Versiyon 1.8.5
 - Autofac eklendi ✔
-- Yeni kurallar eklendi (Aracın Modeli 1900 ile 2099 yılları arasında olabilir, Arabanın teslim edilme tarihi, kiralanma tarihinden daha eski olamaz) ✔
+- Yeni kurallar eklendi ✔
+  - Aracın Modeli 1900 ile 2099 yılları arasında olabilir
+  - Arabanın teslim edilme tarihi, kiralanma tarihinden daha eski olamaz
+  - Aracın kiralanma tarihi bugünden daha eski olamaz
+- Eğer aracın teslim tarihi belli ise ileriye dönük aracı kiraya verebiliyoruz.
 - FluentValidation (UserValidator, CarValidator, RentalValidator) eklendi ✔
 - ValidationAspect eklendi ✔
 - AOP eklendi ✔
