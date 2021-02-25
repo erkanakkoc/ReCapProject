@@ -60,5 +60,6 @@ namespace Business.Constants
         public static string RentalInvalid = "The Car That You Wanted Isn't Available";
         public static string MaintenanceTime = "Maintenance Mode";
         public static string CarImageCountOfCarIdError="A car can have only 5 photos";
+        public static string CarImagePathAlreadyExists="Car path is already existed";
     }
 }

@@ -1,10 +1,12 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -20,12 +22,19 @@ namespace Business.Concrete
 
         public IResult Add(CarImage carImage)
         {
-            if (CheckIfCarImageCountOfCarIdCorrect(carImage.CarId).Success)
+            IResult result = BusinessRules.Run(CheckIfCarImageNameExists(carImage.ImagePath),
+                CheckIfCarImageCountOfCarIdCorrect(carImage.CarId));
+
+            if (result != null)
             {
+                return result;
+            }
+
+                carImage.ImagePath = "test";
+                carImage.ImageDate = DateTime.Now;
                 _carImageDal.Add(carImage);
                 return new SuccessResult(Messages.CarImageAdded);
-            }
-            return new ErrorResult();
+
         }
 
         public IResult Delete(CarImage carImage)
@@ -56,6 +65,15 @@ namespace Business.Concrete
             if (result > 5)
             {
                 return new ErrorResult(Messages.CarImageCountOfCarIdError);
+            }
+            return new SuccessResult();
+        }
+        private IResult CheckIfCarImageNameExists(string imagePath)
+        {
+            var result = _carImageDal.GetAll(ci => ci.ImagePath == imagePath).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.CarImagePathAlreadyExists);
             }
             return new SuccessResult();
         }
