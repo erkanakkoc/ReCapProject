@@ -38,6 +38,12 @@ namespace Business.Constants
         public static string CustomerDeleted = "Customer Deleted";
         public static string CustomersListed = "Customers Listed";
 
+        //CarImage Messages
+        public static string CarImageAdded = "Car Image Added";
+        public static string CarImageUpdated = "Car Image Updated";
+        public static string CarImageDeleted = "Car Image Deleted";
+        public static string CarImagesListed = "Car Images Listed";
+
         //Rental Messages
         public static string RentalAdded = "Rent Information Added";
         public static string RentalUpdated = "Rent Information Updated";
@@ -45,14 +51,14 @@ namespace Business.Constants
         public static string RentalsListed = "Rent Information Listed";
         public static string RentalReturned = "Rented Car Returned Successfully";
 
+
+
         //Error Messages
         public static string BrandNameInvalid = "Brand Name is Invalid";
         public static string CarNameInvalid = "Car Name is Invalid";
         public static string ColorNameInvalid = "Color Name is Invalid";
         public static string RentalInvalid = "The Car That You Wanted Isn't Available";
         public static string MaintenanceTime = "Maintenance Mode";
-
-
-        
+        public static string CarImageCountOfCarIdError="A car can have only 5 photos";
     }
 }
