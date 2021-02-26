@@ -9,5 +9,6 @@ namespace WebAPI.Models
     public class FileUpload
     {
         public IFormFile files { get; set; }
+        public IFormFile ffcarId { get; set; }
     }
 }
