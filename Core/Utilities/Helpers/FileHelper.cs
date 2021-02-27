@@ -56,6 +56,7 @@ namespace Core.Utilities.Helpers
 
             string path = Environment.CurrentDirectory + @"\Images";
             var newPath = Guid.NewGuid().ToString() + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Year + fileExtension;
+            //string webPath = string.Format("/Images/{0}",newPath);
 
             string result = $@"{path}\{newPath}";
             return result;
