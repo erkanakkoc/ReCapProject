@@ -110,7 +110,7 @@ namespace ConsoleUI
                     AddNewColor(colorManager);
                     break;
                 case 6:     //AddNewUser-------------------ITS WORKING
-                    AddNewUser(userManager);
+                    //AddNewUser(userManager);
                     break;
                 case 7:     //AddNewCustomer-------------------ITS WORKING
                     AddNewCustomer(customerManager);
@@ -224,19 +224,19 @@ namespace ConsoleUI
             colorManager.Add(color1);
         }
         //--------------------------------------------------- Case 6 : AddNewUser-----------------------------------------------------
-        private static void AddNewUser(UserManager userManager)
-        {
-            User user1 = new User();
-            Console.WriteLine("First Name : ");
-            user1.FirstName = Console.ReadLine();
-            Console.WriteLine("Last Name : ");
-            user1.LastName = Console.ReadLine();
-            Console.WriteLine("E-mail : ");
-            user1.Email = Console.ReadLine();
-            Console.WriteLine("Password : ");
-            user1.Password = Console.ReadLine();
-            userManager.Add(user1);
-        }
+        //private static void AddNewUser(UserManager userManager)
+        //{
+        //    User user1 = new User();
+        //    Console.WriteLine("First Name : ");
+        //    user1.FirstName = Console.ReadLine();
+        //    Console.WriteLine("Last Name : ");
+        //    user1.LastName = Console.ReadLine();
+        //    Console.WriteLine("E-mail : ");
+        //    user1.Email = Console.ReadLine();
+        //    Console.WriteLine("Password : ");
+        //    user1.Password = Console.ReadLine();
+        //    userManager.Add(user1);
+        //}
         // ------------------------------- Case 7 : AddNewCustomer ----------------------------------------
         private static void AddNewCustomer(CustomerManager customerManager)
         {
