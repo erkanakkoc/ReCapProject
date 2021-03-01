@@ -17,4 +17,5 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(u => u.Email).EmailAddress().WithMessage("Invalid E-Mail address");
         }
     }
+
 }
