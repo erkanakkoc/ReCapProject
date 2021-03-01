@@ -1,6 +1,8 @@
-﻿using Entities.Concrete;
+﻿using Core.Entities.Concrete;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -61,5 +63,12 @@ namespace Business.Constants
         public static string MaintenanceTime = "Maintenance Mode";
         public static string CarImageCountOfCarIdError="A car can have only 5 photos";
         public static string CarImagePathAlreadyExists="Car path is already existed";
+        public static string AuthorizationDenied= "Access Denied. You are not authorized.";
+        public static string UserRegistered = "Kayıt oldu.";
+        public static string UserNotFound = "Kullanıcı bulunamadı.";
+        public static string PasswordError = "Parola hatası.";
+        public static string SuccessfulLogin = "Başarılı giriş.";
+        public static string UserAlreadyExists = "Kullanıcı mevcut.";
+        public static string AccessTokenCreated = "Token oluşturuldu.";
     }
 }
