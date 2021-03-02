@@ -17,9 +17,13 @@ Bu projede yapabileceğiniz işlemlerden bazıları;
   - Controllers eklendi (CarsController, BrandsController, ColorsController, CustomersController, UsersController, RentalsController)
   - Business katmanının tüm özellikleri Controllers'a eklendi.
   
-  
  
 # Yeni Özellikler!
+
+## Versiyon 1.8.9
+- JWT Eklendi
+- Kimlik Doğrulama Sistemi Eklendi
+- Kodlar tekrardan yapılandırıldı. (UserManager, IUserService, AuthManager)  
 
 ## Versiyon 1.8.5
 - Autofac eklendi ✔
