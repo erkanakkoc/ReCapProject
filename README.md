@@ -19,6 +19,11 @@ Here is the list that you can make with this project right now;
  
 # New Features!
 
+## Version 1.8.9
+- JWT Added
+- Authentication System Added
+- Code Refactoring (UserManager, IUserService, AuthManager)
+
 ## Version 1.8.5
 - Autofac ✔
 - New Rules ✔
