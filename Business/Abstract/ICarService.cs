@@ -20,5 +20,7 @@ namespace Business.Abstract
         IDataResult<List<CarDetailDto>> GetByDailyPrice(decimal min, decimal max);
         IDataResult<List<CarDetailDto>> GetByModelYear(string modelYear);
         IDataResult<List<CarDetailDto>> GetCarDetails(Expression<Func<Car, bool>> filter = null);
+
+        IResult AddTransactionalTest(Car car);
     }
 }
