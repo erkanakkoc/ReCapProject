@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
 
 namespace Business.Concrete
 {
@@ -114,13 +115,15 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        [PerformanceAspect(5)]
+        //[PerformanceAspect(2)]
         public IDataResult<Car> GetById(int carId)
         {
+            Thread.Sleep(5000);
             Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
             return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == carId));
         }
 
+        [CacheAspect]
         public IDataResult<List<CarDetailDto>> GetCarsByBrandId(int brandId)
         {
             //Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");

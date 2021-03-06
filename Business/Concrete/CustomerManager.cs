@@ -47,13 +47,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CustomerDeleted);
         }
 
+        [CacheAspect]
         public IDataResult<List<Customer>> GetAll()
         {
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll());
         }
 
         [CacheAspect]
-        [PerformanceAspect(5)]
         public IDataResult<Customer> GetById(int customerId)
         {
             return new SuccessDataResult<Customer>(_customerDal.Get(cu => cu.CustomerId == customerId));

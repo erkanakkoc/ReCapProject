@@ -50,13 +50,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.BrandDeleted);
         }
 
+        [CacheAspect]
         public IDataResult<List<Brand>> GetAll()
         {
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll());
         }
 
         [CacheAspect]
-        [PerformanceAspect(5)]
         public IDataResult<Brand> GetById(int brandId)
         {
             return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == brandId));
