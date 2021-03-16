@@ -363,7 +363,7 @@ namespace ConsoleUI
                 Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
                 foreach (var rent in resultCarId.Data)
                 {
-                    Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.CarName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
+                    Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.BrandName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
                 }
             }
         }
@@ -379,7 +379,7 @@ namespace ConsoleUI
                 Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
                 foreach (var rent in resultCustomerId.Data)
                 {
-                    Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.CarName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
+                    Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.BrandName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
                 }
             }
         }
@@ -395,7 +395,7 @@ namespace ConsoleUI
                 Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
                 foreach (var rent in resultRentDate.Data)
                 {
-                    Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.CarName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
+                    Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.BrandName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
                 }
             }
         }
@@ -411,7 +411,7 @@ namespace ConsoleUI
                 Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
                 foreach (var rent in resultReturnDate.Data)
                 {
-                    Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.CarName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
+                    Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.BrandName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
                 }
             }
         }
@@ -422,7 +422,7 @@ namespace ConsoleUI
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
             foreach (var rent in rentalManager.GetRentalDetails().Data)
             {
-                Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.CarName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
+                Console.WriteLine(String.Format("{0,-12} | {1,-12} | {2,-13} | {3,-11} | {4,-15} | {5,-5} | {6,-15} ", rent.RentalId, rent.BrandName, rent.FirstName, rent.LastName, rent.CompanyName, rent.RentDate, rent.ReturnDate));
             }
         }
     }
