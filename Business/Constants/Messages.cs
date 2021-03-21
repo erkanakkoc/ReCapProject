@@ -54,6 +54,9 @@ namespace Business.Constants
         public static string RentalReturned = "Rented Car Returned Successfully";
 
 
+        public static string SuccessfullyPaid = "Payment Successfully";
+
+
 
         //Error Messages
         public static string BrandNameInvalid = "Brand Name is Invalid";
@@ -70,5 +73,6 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Başarılı giriş.";
         public static string UserAlreadyExists = "Kullanıcı mevcut.";
         public static string AccessTokenCreated = "Token oluşturuldu.";
+        
     }
 }
