@@ -28,6 +28,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  CompanyName = cu.CompanyName,
                              };
                 return result.ToList();
+
             }
         }
     }

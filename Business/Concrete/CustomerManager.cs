@@ -20,6 +20,7 @@ namespace Business.Concrete
     {
         ICustomerDal _customerDal;
 
+
         public CustomerManager(ICustomerDal customerDal)
         {
             _customerDal = customerDal;

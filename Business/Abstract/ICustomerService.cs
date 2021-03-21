@@ -17,5 +17,6 @@ namespace Business.Abstract
         IDataResult<List<Customer>> GetAll();
 
         IDataResult<List<CustomerDetailDto>> GetCustomerDetails(Expression<Func<Customer, bool>> filter = null);
+
     }
 }
