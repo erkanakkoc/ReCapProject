@@ -19,10 +19,8 @@ namespace DataAccess.Concrete.EntityFramework
             using (RentACarDbContext context =new RentACarDbContext())
             {
                 var result = from c in filter is null ? context.Cars : context.Cars.Where(filter)
-                             join b in context.Brands
-                             on c.BrandId equals b.BrandId
-                             join co in context.Colors
-                             on c.ColorId equals co.ColorId
+                             join b in context.Brands on c.BrandId equals b.BrandId
+                             join co in context.Colors on c.ColorId equals co.ColorId
                              //join ci in context.CarImages
                              //on c.CarId equals ci.CarId
                              //select new CarDetailDto
@@ -45,7 +43,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  DailyPrice = c.DailyPrice,
                                  ModelYear = c.ModelYear,
                                  Description = c.Description,
-                                 ImagePath = context.CarImages.Where(x => x.CarId == c.CarId).FirstOrDefault().ImagePath
+                                 ImagePath = context.CarImages.Where(x => x.CarId == c.CarId).FirstOrDefault().ImagePath,
+                                 Status = !(context.Rentals.Any(r => r.CarId == c.CarId && r.ReturnDate == null))
                              };
 
                 return result.ToList();

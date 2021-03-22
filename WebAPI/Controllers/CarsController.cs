@@ -106,7 +106,7 @@ namespace WebAPI.Controllers
         [HttpGet("getcardetails")]
         public IActionResult GetCarDetails()
         {
-            Thread.Sleep(1000);
+            
             var result = _carService.GetCarDetails();
             if (result.Success)
             {
@@ -119,7 +119,7 @@ namespace WebAPI.Controllers
         [HttpGet("getcardetail")]
         public IActionResult GetCarDetail(int carId)
         {
-            Thread.Sleep(1000);
+            
             var result = _carService.GetCarDetail(carId);
             if (result.Success)
             {
