@@ -45,6 +45,7 @@ namespace Business.Constants
         public static string CarImageUpdated = "Car Image Updated";
         public static string CarImageDeleted = "Car Image Deleted";
         public static string CarImagesListed = "Car Images Listed";
+        public static string[] ValidImageFileTypes = { ".JPG", ".JPEG", ".PNG", ".TIF", ".TIFF", ".GIF", ".BMP", ".ICO" };
 
         //Rental Messages
         public static string RentalAdded = "Rent Information Added";
@@ -73,6 +74,8 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Başarılı giriş.";
         public static string UserAlreadyExists = "Kullanıcı mevcut.";
         public static string AccessTokenCreated = "Token oluşturuldu.";
-        
+        internal static string FileCannotDelete;
+        internal static string CarImageMustBeExists;
+        internal static string InvalidImageExtension;
     }
 }
