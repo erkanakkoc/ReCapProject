@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Core.Utilities.Helpers
 {
-    public class FileHelper
+    public static class FileHelper
     {
         public static string Add(IFormFile file)
         {
@@ -55,7 +55,7 @@ namespace Core.Utilities.Helpers
 
             File.Delete(path);
         }
-        public static string Update(string oldPath, IFormFile file)
+        public static string Update(IFormFile file, string oldPath)
         {
             //var result = newPath(file);
             //if (sourcePath.Length > 0)

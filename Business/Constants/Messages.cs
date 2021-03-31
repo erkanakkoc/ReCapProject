@@ -74,8 +74,14 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Başarılı giriş.";
         public static string UserAlreadyExists = "Kullanıcı mevcut.";
         public static string AccessTokenCreated = "Token oluşturuldu.";
-        internal static string FileCannotDelete;
-        internal static string CarImageMustBeExists;
-        internal static string InvalidImageExtension;
+        public static string FileCannotDelete = "File Can Not Delete.";
+        public static string CarImageMustBeExists = "Car Image Must Be Exists.";
+        public static string InvalidImageExtension = "Invalid Image Extension.";
+        public static string ProfileUpdated = "Profile Updated.";
+        public static string EarnedFindex = "Earned Findex.";
+        public static string PaymentSucceeded = "Payment Successfully.";
+        public static string PaymentError = "Payment Error.";
+        public static string PasswordChanged = "Password Changed.";
+        public static string CardAdded = "Card Added.";
     }
 }

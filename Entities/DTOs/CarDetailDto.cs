@@ -20,6 +20,7 @@ namespace Entities.DTOs
         public string ImagePath { get; set; }
         public bool Status { get; set; }
         //public DateTime ImageDate { get; set; }
+        public int MinFindex { get; set; }
 
     }
 }

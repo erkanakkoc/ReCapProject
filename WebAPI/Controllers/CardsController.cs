@@ -11,19 +11,19 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PaymentsController : ControllerBase
+    public class CardsController : ControllerBase
     {
-        IPaymentService _paymentService;
+        ICardService _cardService;
 
-        public PaymentsController(IPaymentService paymentService)
+        public CardsController(ICardService cardService)
         {
-            _paymentService = paymentService;
+            _cardService = cardService;
         }
 
-        [HttpPost("add")]
-        public IActionResult Add(Payment payment)
+        [HttpPost("addcard")]
+        public IActionResult AddCard(Card card)
         {
-            var result = _paymentService.Add(payment);
+            var result = _cardService.AddCard(card);
             if (result.Success)
             {
                 return Ok(result);
@@ -31,10 +31,11 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("checkpayment")]
-        public IActionResult CheckPayment(Payment payment)
+
+        [HttpGet("getcardsbyuserid")]
+        public IActionResult GetCardsByUserId(int userId)
         {
-            var result = _paymentService.CheckPayment(payment);
+            var result = _cardService.GetCardsByUserId(userId);
             if (result.Success)
             {
                 return Ok(result);

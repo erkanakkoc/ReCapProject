@@ -26,8 +26,9 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
-        //[SecuredOperation("rental.add,admin")]
+        [SecuredOperation("rental.add,admin")]
         [ValidationAspect(typeof(RentalValidator))]
+        [CacheRemoveAspect("IRentalService.Get")]
         public IResult Add(Rental rental)
         {
             var result = _rentalDal.GetRentalDetails(r1 => r1.CarId == rental.CarId && (r1.ReturnDate == null || r1.ReturnDate>rental.RentDate));
@@ -41,6 +42,7 @@ namespace Business.Concrete
 
         [SecuredOperation("rental.update,admin")]
         [ValidationAspect(typeof(RentalValidator))]
+        [CacheRemoveAspect("IRentalService.Get")]
         public IResult Update(Rental rental)
         {
             //var result = _rentalDal.GetAll(x => x.CarId == rental.CarId);
@@ -52,10 +54,11 @@ namespace Business.Concrete
             //updatedRental.ReturnDate = DateTime.Now;
             //_rentalDal.Update(updatedRental);
             _rentalDal.Update(rental);
-            return new SuccessResult();
+            return new SuccessResult(Messages.RentalUpdated);
         }
 
         [SecuredOperation("rental.delete,admin")]
+        [CacheRemoveAspect("IRentalService.Get")]
         public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);

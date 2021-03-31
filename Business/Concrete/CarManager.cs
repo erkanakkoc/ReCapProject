@@ -33,7 +33,7 @@ namespace Business.Concrete
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarService.Get")]
-        public IResult Add(Car car)
+        public IDataResult<Car> Add(Car car)
         {
             //TryAgain:
             //if (car.DailyPrice>0 && car.CarName.Length>2)  //Both turns true
@@ -76,7 +76,7 @@ namespace Business.Concrete
             //}
              
             _carDal.Add(car);
-            return new SuccessResult(Messages.CarAdded);
+            return new SuccessDataResult<Car>(car,Messages.CarAdded);
             //Console.WriteLine("Car Name: " + car.CarName + " Added with " + car.DailyPrice + " Daily Price Successfully");
 
 
@@ -104,12 +104,11 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour==23)
-            {
-                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
-            }
+            //if (DateTime.Now.Hour==23)
+            //{
+            //    return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
+            //}
 
-            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
             
         }
@@ -118,8 +117,7 @@ namespace Business.Concrete
         //[PerformanceAspect(2)]
         public IDataResult<Car> GetById(int carId)
         {
-            Thread.Sleep(5000);
-            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
+            //Thread.Sleep(5000);
             return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == carId));
         }
 
@@ -137,13 +135,11 @@ namespace Business.Concrete
         }
         public IDataResult<List<CarDetailDto>> GetByModelYear(string modelYear)
         {
-            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.ModelYear == modelYear));
         }
 
         public IDataResult<List<CarDetailDto>> GetByDailyPrice(decimal min, decimal max)
         {
-            Console.WriteLine("Car Id   Brand Name   Color Name   Model Year   Daily Price   Description");
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.DailyPrice >= min && c.DailyPrice <= max));
         }
 
@@ -177,6 +173,10 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailDto>> GetCarDetail(int carId)
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.CarId == carId));
+        }
+        public IDataResult<Car> GetCarMinFindex(int carId)
+        {
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == carId));
         }
     }
 }

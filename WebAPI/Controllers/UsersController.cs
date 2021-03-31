@@ -65,6 +65,17 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("updateuserfindex")]
+        public IActionResult UpdateUserFindex(int id)
+        {
+            var result = _userService.UpdateUserFindex(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         //-------------------------------------POST-----------------------------------
         [HttpPost("add")]
         public IActionResult Add(User user)
@@ -92,6 +103,18 @@ namespace WebAPI.Controllers
         public IActionResult Delete(User user)
         {
             var result = _userService.Delete(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+        [HttpPost("updateinfo")]
+        public IActionResult UpdateInfo(User user)
+        {
+            var result = _userService.UpdateInfo(user);
             if (result.Success)
             {
                 return Ok(result);

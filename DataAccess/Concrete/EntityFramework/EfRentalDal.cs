@@ -30,7 +30,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  RentalId = r.RentalId, 
                                  BrandName = b.BrandName, 
                                  FirstName = u.FirstName, 
-                                 LastName = u.LastName, 
+                                 LastName = u.LastName,
+                                 CarId = c.CarId,
                                  CompanyName = cu.CompanyName, 
                                  RentDate = r.RentDate, 
                                  ReturnDate = r.ReturnDate 
