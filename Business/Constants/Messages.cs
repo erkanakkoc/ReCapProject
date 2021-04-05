@@ -83,5 +83,6 @@ namespace Business.Constants
         public static string PaymentError = "Payment Error.";
         public static string PasswordChanged = "Password Changed.";
         public static string CardAdded = "Card Added.";
+        public static string MaxFindex="You Reached The Maximum Findex Point";
     }
 }

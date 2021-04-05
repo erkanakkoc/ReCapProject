@@ -25,6 +25,6 @@ namespace Business.Abstract
         IDataResult<List<CarDetailDto>> GetCarsBySelect(int brandId, int colorId);
         IDataResult<List<CarDetailDto>> GetCarDetail(int carId);
 
-        IDataResult<Car> GetCarMinFindex(int carId);
+        IDataResult<Car> GetCarFindex(int carId);
     }
 }

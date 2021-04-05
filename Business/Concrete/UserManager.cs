@@ -84,9 +84,23 @@ namespace Business.Concrete
         public IResult UpdateUserFindex(int userId)
         {
             var userToUpdateFindex = _userDal.Get(u => u.UserId == userId);
-            userToUpdateFindex.Findex += 200;
-            _userDal.Update(userToUpdateFindex);
-            return new SuccessResult(Messages.EarnedFindex);
+            if(userToUpdateFindex.FindexPoint != 1900)
+            {
+                userToUpdateFindex.FindexPoint += 100;
+                _userDal.Update(userToUpdateFindex);
+                return new SuccessResult(Messages.EarnedFindex);
+            }
+            else
+            {
+                userToUpdateFindex.FindexPoint = 1900;
+                return new SuccessResult(Messages.MaxFindex);
+            }
+            
+        }
+
+        public IDataResult<User> GetUserFindexByUserId(int userId)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(u => u.UserId == userId));
         }
     }
 }

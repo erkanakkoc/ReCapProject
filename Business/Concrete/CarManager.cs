@@ -174,7 +174,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.CarId == carId));
         }
-        public IDataResult<Car> GetCarMinFindex(int carId)
+        public IDataResult<Car> GetCarFindex(int carId)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == carId));
         }
