@@ -1,28 +1,33 @@
-![racp](https://user-images.githubusercontent.com/51466724/108199343-ea1a6f00-712d-11eb-8a5f-1e58784efd2a.jpg)
+![racp](https://user-images.githubusercontent.com/51466724/113709665-72a79b80-96eb-11eb-962d-4deb4c5c0241.jpg)
 
 [Click For Turkish README File](https://github.com/erkanakkoc/ReCapProject/blob/master/README_TR.md)
+
+[Click For Front-End Codes](https://github.com/erkanakkoc/ReCapProject-Frontend)
 
 It's a simple rent a car project. But it will be professional with new updates.
 
 Here is the list that you can make with this project right now;
 
-  - CRUD for Cars, Colors, Brands, Users, Customers and Rentals
-  - Working with a real DB
+  - CRUD operations for Cars, Colors, Brands, Users, Customers and Rentals.
+  - Authorization Added. You need to be logged in and having a claim for add, update and delete operations
+  - Working with a real DB (MSSQL)
   - EntityFramework files added
   - IEntity, IDto, IEntityRepository, EfEntityRepositoryBase added
   - Core Layer added 
-  - Real-time queries with your inputs
-  - WebAPI added
-  - Controllers added (CarsController, BrandsController, ColorsController, CustomersController, UsersController, RentalsController)
-  - All functions of Business Layers added to Controllers
+  - WebAPI, JWT, IoC, Interceptors,Autofac
+
+The rules that I tried to follow rules when writing this project
+  - SOLID Principles,
+  - Clean Coding, 
+  - DRY (Don't Repeat Yourself)
 
  
 # New Features!
 
-## Version 1.8.9
-- JWT Added
+## Version 1.9.x
+- Code Refactoring for Car, CarImage and Rental
 - Authentication System Added
-- Code Refactoring (UserManager, IUserService, AuthManager)
+- Payment Service Added
 
 ## Version 1.8.5
 - Autofac ✔
